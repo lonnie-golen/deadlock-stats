@@ -1,0 +1,84 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/deadlock_api_downloader.py
+  downstream_blocks:
+  - deadlock_api_columns
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: deadlock_api_downloader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: deadlock_api_downloader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/deadlock_api_columns.py
+  downstream_blocks:
+  - deadlock_data_to_postgres
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: deadlock_api_columns
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - deadlock_api_downloader
+  uuid: deadlock_api_columns
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_exporters/deadlock_data_to_postgres.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: deadlock_data_to_postgres
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - deadlock_api_columns
+  uuid: deadlock_data_to_postgres
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-12-22 03:34:06.667224+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: load_dl_ranks
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: load_dl_ranks
+variables:
+  api_url: https://assets.deadlock-api.com/v2/ranks
+  df_columns: '[''tier'',''name'',''color'']'
+  table_name: dl_ranks
+variables_dir: /home/src/mage_data/deadlock_stats
+widgets: []
