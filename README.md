@@ -1,9 +1,9 @@
-## 🤔 What is it?
+Overview
 
-This is a Docker Compose template for getting started with a new Mage project.
+This project uses Mage to orchestrate workflows, Python to pull and process data from an API, and Metabase to visualize the results.
+Features
 
-## 🙋‍♂️ Why did you create it?
-
-We created this template for users to have an easy way to deploy a project using Docker.
-
-Using Docker Compose allows editors to easily add their own images or modify the Mage image to their liking. 
+    Fetches data from an API.
+    Processes the data using Python.
+    Automates workflows with Mage.
+    Visualizes data with Metabase.
